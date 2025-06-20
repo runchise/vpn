@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+bin/gen-ssh-key
+[ ! -f .env ] && cp .env.example .env
+
+docker compose build

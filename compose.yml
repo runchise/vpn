@@ -1,0 +1,27 @@
+services:
+  netbird:
+    image: netbirdio/netbird:0.47.2
+    env_file:
+      - .env
+    volumes:
+      - .netbird:/etc/netbird
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+    ports:
+      - 127.0.0.1:2222:22 # ssh
+      - 127.0.0.1:1080:1080 # socks
+  ssh:
+    build:
+      context: .
+    image: runchise-vpn-ssh:v1
+    volumes:
+      - .ssh/id_ed25519.pub:/root/.ssh/authorized_keys
+    network_mode: service:netbird
+  socks:
+    image: ynuwenhof/koblas:1.1.4
+    environment:
+      KOBLAS_NO_AUTHENTICATION: true
+      KOBLAS_ANONYMIZATION: true
+    network_mode: service:netbird

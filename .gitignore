@@ -1,0 +1,5 @@
+.env
+.netbird/**/*
+!.netbird/.keep
+.ssh/**/*
+!.ssh/.keep

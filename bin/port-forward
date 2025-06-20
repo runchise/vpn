@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 remote_host local_port:remote_port"
+  echo "Example: $0 dev-server.netbird.cloud 8080:80"
+  exit 1
+fi
+
+REMOTE_HOST=$1
+MAPPING=$2
+
+# Parse local_port:remote_port
+LOCAL_PORT=${MAPPING%:*}
+REMOTE_PORT=${MAPPING#*:}
+
+# Ensure SSH key exists
+bin/gen-ssh-key
+
+# Ensure the VPN and SSH service started
+docker compose up -d
+
+echo "Port forwarding localhost:$LOCAL_PORT -> $REMOTE_HOST:$REMOTE_PORT"
+ssh -L $LOCAL_PORT:$REMOTE_HOST:$REMOTE_PORT -p 2222 -N root@localhost -i .ssh/id_ed25519
