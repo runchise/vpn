@@ -21,12 +21,17 @@ to access remote server, e.g. `http://dev-server.netbird.cloud`:
 
 ### SOCKS Proxy (recommended)
 
-Alternatively use SOCKS5 proxy (`localhost:1080`) so that you can
+Alternately use SOCKS5 proxy (`localhost:1080`) so that you can
 access remote servers using their proper URLs.
 
-Useful links:
+Recommended browser extensions to activate proxy only for specific web apps:
+
+* [FoxyProxy for Chrome](https://chromewebstore.google.com/detail/foxyproxy/gcknhkkoolaabfmlnjonogaaifnjlfnp?hl=en)
+* [FoxyProxy for Firefox](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/)
+
+Other useful links:
 
 * [Enter proxy server settings on Mac](https://support.apple.com/en-eg/guide/mac-help/mchlp25912/15.0/mac/15.0)
-* [Connection settings in Firefox](https://support.mozilla.org/en-US/kb/connection-settings-firefox)
 * [Configuring a SOCKS proxy server in Chrome](https://www.chromium.org/developers/design-documents/network-stack/socks-proxy/)
+* [Connection settings in Firefox](https://support.mozilla.org/en-US/kb/connection-settings-firefox)
 * [How to Use cURL With Proxy?](https://oxylabs.io/blog/curl-with-proxy)
